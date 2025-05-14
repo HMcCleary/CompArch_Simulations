@@ -1,20 +1,30 @@
 #include <iostream>
+#include <iomanip>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <cstdint>
+#include "cache.h"
 
-#ifndef CACHE_SIZE
-#define CACHE_SIZE 32768
-#endif
+const int MAIN_MEMORY_SIZE = 1024; // 1 KB of main memory
+const int BLOCK_SIZE = 16;         // 16 bytes per block
+const int NUM_BLOCKS = MAIN_MEMORY_SIZE / BLOCK_SIZE;
 
-#ifndef BLOCK_SIZE
-#define BLOCK_SIZE 64
-#endif
+uint8_t main_memory[MAIN_MEMORY_SIZE]; // Simulated main memory
 
-#ifndef ASSOCIATIVITY
-#define ASSOCIATIVITY 4
-#endif
-// make CACHE_SIZE=16384 BLOCK_SIZE=32 ASSOCIATIVITY=2
-int main() {
-    std::cout << "Cache Config: "
-              << "Size=" << CACHE_SIZE
-              << " | Bytes, Block=" << BLOCK_SIZE
-              << " | Bytes, Associativity=" << ASSOCIATIVITY << std::endl;
+// Initialize memory with fake data
+void initializeMemory() {
+    srand(time(nullptr));
+    for (int i = 0; i < MAIN_MEMORY_SIZE; ++i) {
+        main_memory[i] = rand() % 256; // random byte
+    }
+}
+
+// Print contents of memory for debugging
+void printMemory(int start, int end) {
+    for (int i = start; i < end; ++i) {
+        if (i % 16 == 0) std::cout << std::endl << std::setfill('0') << std::setw(4) << i << ": ";
+        std::cout << std::hex << std::setw(2) << std::setfill('0') << (int)main_memory[i] << " ";
+    }
+    std::cout << std::dec << std::endl;
 }
