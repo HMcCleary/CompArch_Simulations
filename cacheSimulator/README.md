@@ -1,5 +1,5 @@
-#Cache Simulation Using C++
+# Cache Simulation Using C++
 
-##Program Specifications
+## Program Specifications
 
-##What is a cache? 
+## What is a cache? 
