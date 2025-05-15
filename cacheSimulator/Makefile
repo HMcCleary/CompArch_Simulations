@@ -3,8 +3,8 @@ CXX := g++
 CXXFLAGS := -Wall -Wextra -std=c++17
 
 # Cache configuration (can be overridden by command line or environment)
-CACHE_SIZE ?= 32768        # in bytes
-BLOCK_SIZE ?= 64           # in bytes
+CACHE_SIZE ?= 1024        # in bytes
+BLOCK_SIZE ?= 16           # in bytes
 ASSOCIATIVITY ?= 4         # number of blocks per set
 
 # Define macros to pass to the compiler

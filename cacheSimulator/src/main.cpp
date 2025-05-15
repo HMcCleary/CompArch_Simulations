@@ -1,12 +1,33 @@
 #include "cache.h"
-#include <iostream>
+#include <ctime>
+#include <random>
 
-int main() {
-    initializeMemory();
-    printMemory(0, 64); // Show first 64 bytes for demo
+int main(){
 
-    // You can now simulate accessing specific memory addresses
-    // and model how a cache would load and store blocks.
+    inititalize_Memory();
 
-    return 0;
+    print_mainMem(0, 64);
+
+    std::srand(std::time(nullptr));
+    int hits = 0, misses = 0;
+
+
+    void* start = (void*)&main_memory[0][0];
+    void* end = (void*)&main_memory[MAIN_BLOCKS][BLOCK_SIZE]; 
+    std::cout << "First Address: " << start
+              << " | Last Address: " << end << std::endl;
+
+    int trials; 
+    int hits = 0;
+    int misses = 0; 
+    std::cout << "How many tests should be run? ";
+    std::cin >> trials; 
+
+    for (int i = 0; i < trials; i++){
+        
+    }
+    std::cout << static_cast<int>(*(((unsigned char*)start) + 17)) << std::endl;
+
+
+    return 0; 
 }
